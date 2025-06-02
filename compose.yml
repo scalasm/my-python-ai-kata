@@ -1,0 +1,22 @@
+services:
+  postgres:
+    container_name: postgres-ai
+    image: postgres/postgres:17.5
+    environment:
+      POSTGRES_USER: "${POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      POSTGRES_DB: "${POSTGRES_DB}"
+    ports:
+      - 5432:5432
+    volumes:
+      # Note that with docker outside dockers these folders are created on the host OS
+      # (You will find /home/vscode and /workspaces/my-python-ai-kata directories inside your host OS!)
+      # We don't care much were the DB data are store but we want to keep them outside this container
+      - ./postgres-data:/var/lib/postgresql/data
+      # If you want to create a new schema, please do it here
+      - ${LOCAL_WORKSPACE_FOLDER}/docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-d", "${POSTGRES_DB}", "-U", "${POSTGRES_USER}" ]
+      timeout: 10s
+      interval: 2s
+      retries: 10

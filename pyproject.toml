@@ -1,0 +1,98 @@
+[tool.poetry]
+name = "my-python-ai-kata"
+version = "0.0.0"
+description = "Arch AI Sandbox"
+authors = ["Mario Scalas <mario.scalas@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/scalasm/scalasm/my-python-ai-kata"
+repository = "https://github.com/scalasm/scalasm/my-python-ai-kata"
+documentation = "https://my-python-ai-kata.readthedocs.io"
+classifiers = [
+    "Development Status :: 1 - Planning",
+]
+
+[tool.poetry.urls]
+Changelog = "https://github.com/scalasm/my-python-ai-kata/releases"
+
+[tool.poetry.requires-plugins]
+poetry-plugin-export = ">=1.8"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+click = ">=8.1.8"
+numpy = "^1.26.3"
+sqlalchemy = "^2.0.25"
+psycopg2-binary = "^2.9.9"
+ipython-sql = "^0.5.0"
+pandas = "^2.2.0"
+pydantic = "^2.6.0"
+networkx = "^3.2.1"
+ldap3 = "^2.9.1"
+boto3 = "^1.35.92"
+diffusers = "^0.32.2"
+torch = "^2.6.0"
+transformers = "^4.50.1"
+accelerate = "^1.5.2"
+openai = "^1.68.2"
+tabulate = "^0.9.0"
+
+[tool.poetry.group.dev.dependencies]
+Pygments = ">=2.10.0"
+black = ">=21.10b0"
+coverage = {extras = ["toml"], version = ">=6.2"}
+darglint = ">=1.8.1"
+flake8 = ">=4.0.1"
+flake8-bandit = ">=2.1.2"
+flake8-bugbear = ">=21.9.2"
+flake8-docstrings = ">=1.6.0"
+flake8-rst-docstrings = ">=0.2.5"
+furo = ">=2021.11.12"
+isort = ">=5.10.1"
+mypy = ">=0.930"
+pep8-naming = ">=0.12.1"
+pre-commit = ">=2.16.0"
+pre-commit-hooks = ">=4.1.0"
+pytest = ">=6.2.5"
+pyupgrade = ">=2.29.1"
+safety = ">=1.10.3"
+sphinx = ">=4.3.2"
+sphinx-autobuild = ">=2021.3.14"
+sphinx-click = ">=3.0.2"
+typeguard = ">=2.13.3"
+xdoctest = {extras = ["colors"], version = ">=0.15.10"}
+myst-parser = {version = ">=0.16.1"}
+jupyter = "^1.0.0"
+ruff = "^0.11.10"
+
+[tool.poetry.scripts]
+clai = "my_python_ai_kata.__main__:main"
+
+[tool.coverage.paths]
+source = ["src", "*/site-packages"]
+tests = ["tests", "*/tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["my_python_ai_kata", "tests"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 100
+
+[tool.isort]
+profile = "black"
+force_single_line = true
+lines_after_imports = 2
+
+[tool.mypy]
+strict = true
+warn_unreachable = true
+pretty = true
+show_column_numbers = true
+show_error_codes = true
+show_error_context = true
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
