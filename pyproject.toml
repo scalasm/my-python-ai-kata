@@ -64,6 +64,8 @@ xdoctest = {extras = ["colors"], version = ">=0.15.10"}
 myst-parser = {version = ">=0.16.1"}
 jupyter = "^1.0.0"
 ruff = "^0.11.10"
+nox = "^2025.5.1"
+nox-poetry = "^1.2.0"
 
 [tool.poetry.scripts]
 clai = "my_python_ai_kata.__main__:main"

@@ -161,5 +161,8 @@ cython_debug/
 
 # Container specific
 
+# Poetry
+.poetry
+
 # This is a symlink created a container startup to make Docker outside Docker work correctly
 postgres-data
