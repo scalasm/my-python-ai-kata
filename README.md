@@ -21,12 +21,9 @@ The DevContainer will also spin up a Python virtual even with all the required d
 
 So, after first spinning up your dev environment, you will immediately be able to run the application main entrypoint through the command `my-python-ai-kata`:
 ```bash
-arch-ai-sandoox-py3.12vscode ➜ /workspaces/my-python-ai-kata (main) $ my-python-ai-kata 
-My pyAI Sandbox is ready.
+my-python-ai-kata-py3.12vscode ➜ /workspaces/my-python-ai-kata (main) $ clai
+My Python AI Sandbox is ready.
 ```
-
-# CL(A)I 
-We also provide a basic CLI wrapper (which should be the standard way to run these simple features), see [the documentation](./docs/clai.md).
 
 # Project structure
 
