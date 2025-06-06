@@ -16,7 +16,16 @@ services:
       # If you want to create a new schema, please do it here
       - ${LOCAL_WORKSPACE_FOLDER}/docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
-      test: [ "CMD", "pg_isready", "-q", "-d", "${POSTGRES_DB}", "-U", "${POSTGRES_USER}" ]
+      test:
+        [
+          "CMD",
+          "pg_isready",
+          "-q",
+          "-d",
+          "${POSTGRES_DB}",
+          "-U",
+          "${POSTGRES_USER}",
+        ]
       timeout: 10s
       interval: 2s
       retries: 10

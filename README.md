@@ -20,12 +20,14 @@ While you can run this with whatever IDE you prefer, a [DevContainer configurati
 The DevContainer will also spin up a Python virtual even with all the required dependencies installed. You use [Poetry commands](https://python-poetry.org/docs/cli/) to add or update dependencies later on.
 
 So, after first spinning up your dev environment, you will immediately be able to run the application main entrypoint through the command `my-python-ai-kata`:
+
 ```bash
 my-python-ai-kata-py3.12vscode ➜ /workspaces/my-python-ai-kata (main) $ clai
 My Python AI Sandbox is ready.
 ```
 
 # Instructions
+
 If you are a developer (or an AI coding agent!) looking for guidance about the project organization, goals, and conventions, read [docs](./docs/instructions.md).
 
 # Docker support
