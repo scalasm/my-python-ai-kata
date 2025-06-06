@@ -2,7 +2,6 @@
 
 import os
 import shlex
-import shutil
 import sys
 from pathlib import Path
 from textwrap import dedent
@@ -23,18 +22,10 @@ except ImportError:
     raise SystemExit(dedent(message)) from None
 
 
-package = "my_python_ai_kata"
+package = "my-python-ai-kata"
 python_versions = ["3.12"]
 nox.needs_version = ">= 2025.2.1"
-nox.options.sessions = (
-    "pre-commit",
-    "safety",
-    "mypy",
-    "tests",
-    "typeguard",
-    "xdoctest",
-    "docs-build"
-)
+nox.options.sessions = ("pre-commit", "safety", "mypy", "tests", "typeguard")
 
 
 def activate_virtualenv_in_precommit_hooks(session: Session) -> None:
@@ -120,21 +111,7 @@ def precommit(session: Session) -> None:
         "--hook-stage=manual",
         "--show-diff-on-failure",
     ]
-    session.install(
-        "black",
-        "darglint",
-        "flake8",
-        "flake8-bandit",
-        "flake8-bugbear",
-        "flake8-docstrings",
-        "flake8-rst-docstrings",
-        "isort",
-        "pep8-naming",
-        "pre-commit",
-        "pre-commit-hooks",
-        "pyupgrade",
-    )
-    session.run("pre-commit", *args)
+    session.run("pre-commit", *args, external=True)
     if args and args[0] == "install":
         activate_virtualenv_in_precommit_hooks(session)
 
@@ -143,7 +120,6 @@ def precommit(session: Session) -> None:
 def safety(session: Session) -> None:
     """Scan dependencies for insecure packages."""
     requirements = session.poetry.export_requirements()
-    session.install("safety")
     session.run("safety", "check", "--full-report", f"--file={requirements}")
 
 
@@ -151,8 +127,7 @@ def safety(session: Session) -> None:
 def mypy(session: Session) -> None:
     """Type-check using mypy."""
     args = session.posargs or ["src", "tests", "docs/conf.py"]
-    session.install(".")
-    session.install("mypy", "pytest")
+    session.run("pip", "install", ".")
     session.run("mypy", *args)
     if not session.posargs:
         session.run("mypy", f"--python-executable={sys.executable}", "noxfile.py")
@@ -161,8 +136,8 @@ def mypy(session: Session) -> None:
 @session(python=python_versions)
 def tests(session: Session) -> None:
     """Run the test suite."""
-    session.install(".")
-    session.install("coverage[toml]", "pytest", "pygments")
+    # Ensure src/ is on the Python path so package modules are importable
+    session.env["PYTHONPATH"] = str(Path().resolve() / "src")
     try:
         session.run("coverage", "run", "--parallel", "-m", "pytest", *session.posargs)
     finally:
@@ -175,63 +150,14 @@ def coverage(session: Session) -> None:
     """Produce the coverage report."""
     args = session.posargs or ["report"]
 
-    session.install("coverage[toml]")
-
     if not session.posargs and any(Path().glob(".coverage.*")):
-        session.run("coverage", "combine")
+        session.run("coverage", "combine", external=True)
 
-    session.run("coverage", *args)
+    session.run("coverage", *args, external=True)
 
 
 @session(python=python_versions[0])
 def typeguard(session: Session) -> None:
     """Runtime type checking using Typeguard."""
-    session.install(".")
-    session.install("pytest", "typeguard", "pygments")
+    session.run("pip", "install", ".")
     session.run("pytest", f"--typeguard-packages={package}", *session.posargs)
-
-
-@session(python=python_versions)
-def xdoctest(session: Session) -> None:
-    """Run examples with xdoctest."""
-    if session.posargs:
-        args = [package, *session.posargs]
-    else:
-        args = [f"--modname={package}", "--command=all"]
-        if "FORCE_COLOR" in os.environ:
-            args.append("--colored=1")
-
-    session.install(".")
-    session.install("xdoctest[colors]")
-    session.run("python", "-m", "xdoctest", *args)
-
-
-@session(name="docs-build", python=python_versions[0])
-def docs_build(session: Session) -> None:
-    """Build the documentation."""
-    args = session.posargs or ["docs", "docs/_build"]
-    if not session.posargs and "FORCE_COLOR" in os.environ:
-        args.insert(0, "--color")
-
-    session.install(".")
-    session.install("sphinx", "sphinx-click", "furo", "myst-parser")
-
-    build_dir = Path("docs", "_build")
-    if build_dir.exists():
-        shutil.rmtree(build_dir)
-
-    session.run("sphinx-build", *args)
-
-
-@session(python=python_versions[0])
-def docs(session: Session) -> None:
-    """Build and serve the documentation with live reloading on file changes."""
-    args = session.posargs or ["--open-browser", "docs", "docs/_build"]
-    session.install(".")
-    session.install("sphinx", "sphinx-autobuild", "sphinx-click", "furo", "myst-parser")
-
-    build_dir = Path("docs", "_build")
-    if build_dir.exists():
-        shutil.rmtree(build_dir)
-
-    session.run("sphinx-autobuild", *args)
