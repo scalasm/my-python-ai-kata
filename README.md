@@ -26,6 +26,22 @@ my-python-ai-kata-py3.12vscode ➜ /workspaces/my-python-ai-kata (main) $ clai
 My Python AI Sandbox is ready.
 ```
 
+# Command refences
+
+Using nox with venv is a bit tricky, so I wrapped recurring commands in the following since I always forget about them!
+
+## Run tests
+```bash
+./tests.sh
+```
+
+## Run pre-commit checks
+
+This will run all code quality checks:
+```bash
+./pre-commit.sh
+```
+
 # Instructions
 
 If you are a developer (or an AI coding agent!) looking for guidance about the project organization, goals, and conventions, read [docs](./docs/instructions.md).
