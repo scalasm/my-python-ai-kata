@@ -5,17 +5,17 @@ This is a Python 3.12 project based on Poetry and other Python tools.
 # Requirements
 
 - Docker desktop (tested with 4.39.0)
-- Folders on your computer that will mounted inside the DevContainer:
-  - `$HOME/.ssh` - SSH keys (required if cloned this repository using SSH)
-  - `$HOME/.gitconfig` - shared configuration files
-  - `$HOME/.cache` - for your Hugging Face models (and Python package caches)
 
-Note: use the SSH URL to access clone this repository, not a HTTPS one (otherwise the Git client included in the devcontainer will complain):
- - This  `git@github.com:scalasm/my-python-ai-kata.git`
+Note: use the SSH URL to access clone this repository, not a HTTPS one (otherwise the Git client included in the devcontainer will complain) (e.g., for example this is fine: `git@github.com:scalasm/my-python-ai-kata.git`).
 
 # How to run
 
 While you can run this with whatever IDE you prefer, a [DevContainer configuration](https://hub.docker.com/r/microsoft/devcontainers-python) is included so that you can use [VSCode support for DevContainers](https://code.visualstudio.com/docs/devcontainers/containers).
+
+- Folders on your computer that will mounted inside the DevContainer:
+  - `$HOME/.ssh` - SSH keys (required if cloned this repository using SSH)
+  - `$HOME/.gitconfig` - shared configuration files
+  - `$HOME/.cache` - for your Hugging Face models (and Python package caches)
 
 The DevContainer will also spin up a Python virtual even with all the required dependencies installed. You use [Poetry commands](https://python-poetry.org/docs/cli/) to add or update dependencies later on.
 
@@ -25,15 +25,9 @@ my-python-ai-kata-py3.12vscode ➜ /workspaces/my-python-ai-kata (main) $ clai
 My Python AI Sandbox is ready.
 ```
 
-# Project structure
-
-- `pyproject.toml` - this is Poetry configuration file, where names, scripts, runtime/build dependencies are needed
-- `src` - it is the where the package source code is, with `my_python_ai_kata` being the root package
-- `tests` - it is where the test source code goes
-- `noxfile` - it is the test automation for different scenarios, including linting, precommit hooks, ... 
-- other `dot files` required for tools configuration (e.g., code quality tools) 
-
+# Instructions
+If you are a developer (or an AI coding agent!) looking for guidance about the project organization, goals, and conventions, read [docs](./docs/instructions.md).
 
 # Docker support
 
-See [running-postgres-in-docker.md](./docs/running-postgres-in-docker.md).
+See [running-postgres-in-docker.md](./docs/running-postgres-in-docker.md) - it is useful if you want to spin up a postgres database quickly.
