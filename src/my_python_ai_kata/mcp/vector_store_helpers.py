@@ -6,16 +6,16 @@ using LangChain, OpenAI embeddings, and SKLearnVectorStore.
 
 import os
 import re
-import tiktoken
 from typing import Optional
 
+import tiktoken
 from bs4 import BeautifulSoup
-
-from langchain_core.documents import Document
-from langchain_community.document_loaders import RecursiveUrlLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_community.document_loaders import RecursiveUrlLoader
+from langchain_community.vectorstores import SKLearnVectorStore
+from langchain_community.vectorstores import VectorStore
+from langchain_core.documents import Document
 from langchain_openai import OpenAIEmbeddings
-from langchain_community.vectorstores import SKLearnVectorStore, VectorStore
 
 
 class VectorStoreFactory:
@@ -71,7 +71,9 @@ class VectorStoreFactory:
         content = main_content.get_text() if main_content else soup.text
         return re.sub(r"\n\n+", "\n\n", content).strip()
 
-    def load_langgraph_docs(self, urls: list[str], max_depth: int) -> tuple[list[Document], list[int]]:
+    def load_langgraph_docs(
+        self, urls: list[str], max_depth: int
+    ) -> tuple[list[Document], list[int]]:
         """Load LangGraph documentation from the official website.
 
         Args:
@@ -107,7 +109,7 @@ class VectorStoreFactory:
         output_filename = os.path.join(self.work_dir, output_filename)
         with open(output_filename, "w") as f:
             for i, doc in enumerate(documents):
-                source = doc.metadata.get('source', 'Unknown URL')
+                source = doc.metadata.get("source", "Unknown URL")
                 f.write(
                     f"DOCUMENT {i + 1}\nSOURCE: {source}\nCONTENT:\n"
                     f"{doc.page_content}\n\n{'=' * 80}\n\n"
@@ -125,8 +127,7 @@ class VectorStoreFactory:
         """
         print("Splitting documents...")
         text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
-            chunk_size=8000,
-            chunk_overlap=500
+            chunk_size=8000, chunk_overlap=500
         )
         split_docs = text_splitter.split_documents(documents)
         print(f"Created {len(split_docs)} chunks from documents.")
@@ -198,7 +199,7 @@ class VectorStoreQueryHelper:
             str: The contents of the llms_full.txt file.
         """
         try:
-            with open(self.llms_full_path, 'r') as file:
+            with open(self.llms_full_path) as file:
                 return file.read()
         except FileNotFoundError:
             return "llms_full.txt not found. Please ensure the vector store has been created."
@@ -222,7 +223,9 @@ class VectorStoreQueryHelper:
 
 if __name__ == "__main__":
     work_dir = os.path.join(os.getcwd(), "vector_store_data")
-    print(f"Creating a sample Vector store in {work_dir!r} using Langgraph online documentation ...")
+    print(
+        f"Creating a sample Vector store in {work_dir!r} using Langgraph online documentation ..."
+    )
 
     urls = [
         "https://langchain-ai.github.io/langgraph/",
@@ -238,12 +241,14 @@ if __name__ == "__main__":
     vector_store_factory.create_vectore_store(urls, max_depth)
     print("Vector store created successfully.")
 
-    query_helper = VectorStoreQueryHelper(parquet_path=vector_store_factory.parquet_path)
+    query_helper = VectorStoreQueryHelper(
+        parquet_path=vector_store_factory.parquet_path
+    )
 
     # Run an example querry
     query = "What is LangGraph?"
     relevant_docs = query_helper.query(query)
 
     for doc in relevant_docs:
-        print(doc.metadata['source'])
+        print(doc.metadata["source"])
         print(doc.page_content[:500])

@@ -1,18 +1,21 @@
 """Client for interacting with a FastMCP server."""
 
-
-from fastmcp import Client
 import asyncio
 
+from fastmcp import Client
 
-async def interact_with_server():
+
+async def interact_with_server() -> None:
+    """Interact with the FastMCP server using the Client."""
+    # Create a client instance to connect to the FastMCP server
+
     print("--- Creating Client ---")
 
     # Option 1: Connect to a server run via `python my_server.py` (uses stdio)
     # client = Client("my_hello_server.py")
 
     # Option 2: Connect to a server run via `fastmcp run ... --transport sse --port 8080`
-    client = Client("http://localhost:8888") # Use the correct URL/port
+    client = Client("http://localhost:8888")  # Use the correct URL/port
 
     print(f"Client configured to connect to: {client}")
 
@@ -20,7 +23,9 @@ async def interact_with_server():
         async with client:
             print("--- Client Connected ---")
             # Call the 'greet' tool
-            greet_result = await client.call_tool_mcp("greet", {"name": "Remote Client"})
+            greet_result = await client.call_tool_mcp(
+                "greet", {"name": "Remote Client"}
+            )
             print(f"greet result: {greet_result}")
 
             # Read the 'config' resource
@@ -35,6 +40,7 @@ async def interact_with_server():
         print(f"An error occurred: {e}")
     finally:
         print("--- Client Interaction Finished ---")
+
 
 if __name__ == "__main__":
     asyncio.run(interact_with_server())

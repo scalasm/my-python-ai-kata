@@ -1,7 +1,7 @@
 """Hello World MCP Server."""
 
-
 from fastmcp import FastMCP
+
 
 mcp: FastMCP = FastMCP(name="My First MCP Server")
 
@@ -44,8 +44,11 @@ def get_user_profile(user_id: int) -> dict:
 async def summarize_prompt(text: str) -> list[dict]:
     """Generates a prompt to summarize the provided text."""
     return [
-        {"role": "system", "content": "You are a helpful assistant skilled at summarization."},
-        {"role": "user", "content": f"Please summarize the following text:\n\n{text}"}
+        {
+            "role": "system",
+            "content": "You are a helpful assistant skilled at summarization.",
+        },
+        {"role": "user", "content": f"Please summarize the following text:\n\n{text}"},
     ]
 
 

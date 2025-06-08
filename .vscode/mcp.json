@@ -45,6 +45,7 @@
       ],
       "env": {
         "OPENAI_API_KEY": "${input:openai_api_key}"
+      }
     }
-  } 
+  }
 }

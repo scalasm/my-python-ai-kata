@@ -3,11 +3,13 @@
 This is a Python 3.12 project based on Poetry and other Python tools.
 
 # What is included
+
 - [MCP sample Tools](./docs/mcp.md) - add your MCP tools to VSCode and other clients
 
 # Requirements
 
 Note that you will need a Dockerized environment to start containers or activate the dev container.
+
 - Tested with Docker desktop (tested with 4.42.0)
 
 Note: use the SSH URL to access clone this repository, not a HTTPS one (otherwise the Git client included in the devcontainer will complain) (e.g., for example this is fine: `git@github.com:scalasm/my-python-ai-kata.git`).
@@ -35,6 +37,7 @@ My Python AI Sandbox is ready.
 Using nox with venv is a bit tricky, so I wrapped recurring commands in the following since I always forget about them!
 
 ## Run tests
+
 ```bash
 ./tests.sh
 ```
@@ -42,6 +45,7 @@ Using nox with venv is a bit tricky, so I wrapped recurring commands in the foll
 ## Run pre-commit checks
 
 This will run all code quality checks:
+
 ```bash
 ./pre-commit.sh
 ```

@@ -2,9 +2,11 @@
 """Query tool for Langraph using the example vector store."""
 
 import os
+
 from mcp.server.fastmcp import FastMCP
 
 from my_python_ai_kata.mcp.vector_store_helpers import VectorStoreQueryHelper
+
 
 # Define common path to the repo locally
 work_dir = "/workspaces/my-python-ai-kata/vector_store_data"  # os.path.join(os.getcwd(), "vector_store_data")
@@ -30,12 +32,20 @@ def langgraph_query_tool(query: str) -> str:
     """
     relevant_docs = query_helper.query(query)
 
-    formatted_context = "\n\n".join([f"==DOCUMENT {i + 1}==\n{doc.page_content}" for i, doc in enumerate(relevant_docs)])
+    formatted_context = "\n\n".join(
+        [
+            f"==DOCUMENT {i + 1}==\n{doc.page_content}"
+            for i, doc in enumerate(relevant_docs)
+        ]
+    )
     return formatted_context
 
 
 # The @mcp.resource() decorator is meant to map a URI pattern to a function that provides the resource content
-@mcp.resource(uri="docs://langgraph/full", description="Get all LangGraph documentation in one single shot.")
+@mcp.resource(
+    uri="docs://langgraph/full",
+    description="Get all LangGraph documentation in one single shot.",
+)
 def get_all_langgraph_docs() -> str:
     """Get all the LangGraph documentation.
 
@@ -52,4 +62,4 @@ def get_all_langgraph_docs() -> str:
 
 if __name__ == "__main__":
     # Initialize and run the server
-    mcp.run(transport='stdio')
+    mcp.run(transport="stdio")
