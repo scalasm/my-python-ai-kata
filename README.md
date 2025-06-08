@@ -2,9 +2,13 @@
 
 This is a Python 3.12 project based on Poetry and other Python tools.
 
+# What is included
+- [MCP sample Tools](./docs/mcp.md) - add your MCP tools to VSCode and other clients
+
 # Requirements
 
-- Docker desktop (tested with 4.39.0)
+Note that you will need a Dockerized environment to start containers or activate the dev container.
+- Tested with Docker desktop (tested with 4.42.0)
 
 Note: use the SSH URL to access clone this repository, not a HTTPS one (otherwise the Git client included in the devcontainer will complain) (e.g., for example this is fine: `git@github.com:scalasm/my-python-ai-kata.git`).
 

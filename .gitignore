@@ -166,3 +166,4 @@ cython_debug/
 
 # This is a symlink created a container startup to make Docker outside Docker work correctly
 postgres-data
+vector_store_data
