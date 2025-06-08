@@ -1,4 +1,4 @@
-#!/Users/rlm/Desktop/Code/vibe-code-benchmark/.venv/bin/python
+#!/workspaces/my-python-ai-kata/.venv/bin/python
 """Query tool for Langraph using the example vector store."""
 
 import os
