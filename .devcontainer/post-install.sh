@@ -22,4 +22,7 @@ poetry config virtualenvs.in-project true
 # Now install all dependencies
 poetry install
 
+# The inspector is a useful debugging tool for the Model Context Protocol
+npx @modelcontextprotocol/inspector
+
 echo "Done!"

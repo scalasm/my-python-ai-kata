@@ -5,6 +5,12 @@
       "id": "github_token",
       "description": "GitHub Personal Access Token",
       "password": true
+    },
+    {
+      "type": "promptString",
+      "id": "openai_api_key",
+      "description": "OpenAI API Key",
+      "password": true
     }
   ],
   "servers": {
@@ -20,6 +26,25 @@
       ],
       "env": {
         "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github_token}"
+      }
+    },
+    "my-hello-mcp-server": {
+      "type": "stdio",
+      "command": "${workspaceFolder}/.venv/bin/fastmcp",
+      "args": [
+        "run",
+        "${workspaceFolder}/src/my_python_ai_kata/mcp/my_hello_server.py"
+      ]
+    },
+    "my-langgraph_query_tool": {
+      "type": "stdio",
+      "command": "${workspaceFolder}/.venv/bin/fastmcp",
+      "args": [
+        "run",
+        "${workspaceFolder}/src/my_python_ai_kata/mcp/langgraph_query_tool.py"
+      ],
+      "env": {
+        "OPENAI_API_KEY": "${input:openai_api_key}"
       }
     }
   }
