@@ -23,7 +23,7 @@ poetry config virtualenvs.in-project true
 poetry install
 
 # The inspector is a useful debugging tool for the Model Context Protocol
-npx @modelcontextprotocol/inspector
+npm install @modelcontextprotocol/inspector -g
 
 # Install Pyright for type checking
 npm install -g pyright

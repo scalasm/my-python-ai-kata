@@ -1,9 +1,11 @@
 """Hello World MCP Server."""
 
+from typing import Any
+
 from fastmcp import FastMCP
 
 
-mcp: FastMCP = FastMCP(name="My First MCP Server")
+mcp: FastMCP = FastMCP(name="My First MCP Server")  # type: ignore
 
 
 @mcp.tool()
@@ -22,7 +24,7 @@ APP_CONFIG = {"theme": "dark", "version": "1.1", "feature_flags": ["new_dashboar
 
 
 @mcp.resource("data://config")
-def get_config() -> dict:
+def get_config() -> dict:  # type: ignore
     """Provides the application configuration."""
     return APP_CONFIG
 
@@ -34,14 +36,14 @@ USER_PROFILES = {
 
 
 @mcp.resource("users://{user_id}/profile")
-def get_user_profile(user_id: int) -> dict:
+def get_user_profile(user_id: int) -> dict[str, Any]:
     """Retrieves a user's profile by their ID."""
     # The {user_id} from the URI is automatically passed as an argument
     return USER_PROFILES.get(user_id, {"error": "User not found"})
 
 
 @mcp.prompt("summarize")
-async def summarize_prompt(text: str) -> list[dict]:
+async def summarize_prompt(text: str) -> list[dict]:  # type: ignore
     """Generates a prompt to summarize the provided text."""
     return [
         {
