@@ -25,7 +25,7 @@ except ImportError:
 package = "my-python-ai-kata"
 python_versions = ["3.12"]
 nox.needs_version = ">= 2025.2.1"
-nox.options.sessions = ("pre-commit", "safety", "mypy", "tests", "typeguard")
+nox.options.sessions = ("pre-commit", "safety", "tests", "typeguard", "pyright")
 
 
 def activate_virtualenv_in_precommit_hooks(session: Session) -> None:
@@ -124,16 +124,6 @@ def safety(session: Session) -> None:
 
 
 @session(python=python_versions)
-def mypy(session: Session) -> None:
-    """Type-check using mypy."""
-    args = session.posargs or ["src", "tests", "docs/conf.py"]
-    session.run("pip", "install", ".")
-    session.run("mypy", *args)
-    if not session.posargs:
-        session.run("mypy", f"--python-executable={sys.executable}", "noxfile.py")
-
-
-@session(python=python_versions)
 def tests(session: Session) -> None:
     """Run the test suite."""
     # Ensure src/ is on the Python path so package modules are importable
@@ -161,3 +151,9 @@ def typeguard(session: Session) -> None:
     """Runtime type checking using Typeguard."""
     session.run("pip", "install", ".")
     session.run("pytest", f"--typeguard-packages={package}", *session.posargs)
+
+
+@session(python=False)
+def pyright(session: Session) -> None:
+    """Type-check using Pyright."""
+    session.run("npx", "pyright", external=True)

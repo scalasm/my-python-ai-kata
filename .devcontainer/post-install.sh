@@ -25,4 +25,7 @@ poetry install
 # The inspector is a useful debugging tool for the Model Context Protocol
 npx @modelcontextprotocol/inspector
 
+# Install Pyright for type checking
+npm install -g pyright
+
 echo "Done!"
