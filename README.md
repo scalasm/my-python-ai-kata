@@ -50,6 +50,16 @@ This will run all code quality checks:
 ./pre-commit.sh
 ```
 
+## Type checking
+
+We use [Pyright](https://github.com/microsoft/pyright) for static type checking. To run type checks:
+
+```bash
+npx pyright
+```
+
+Or use the VSCode Pyright extension for inline feedback.
+
 # Instructions
 
 If you are a developer (or an AI coding agent!) looking for guidance about the project organization, goals, and conventions, read [docs](./docs/instructions.md).
