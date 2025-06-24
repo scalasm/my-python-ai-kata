@@ -46,6 +46,15 @@
       "env": {
         "OPENAI_API_KEY": "${input:openai_api_key}"
       }
+    },
+    "my-hello-mcp-server-dockerized": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "scalasmhmh/my-hello-mcp-server:latest"
+      ]
     }
   }
 }

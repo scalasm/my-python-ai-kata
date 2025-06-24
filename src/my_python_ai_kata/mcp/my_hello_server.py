@@ -8,13 +8,13 @@ from fastmcp import FastMCP
 mcp: FastMCP = FastMCP(name="My First MCP Server")  # type: ignore
 
 
-@mcp.tool()
+@mcp.tool(description="Greet a person by name provided as input")
 def greet(name: str) -> str:
     """Returns a simple greeting."""
     return f"Hello, {name}!"
 
 
-@mcp.tool()
+@mcp.tool(description="Add two integers together, in a very smart way!")
 def add(a: int, b: int) -> int:
     """Adds two numbers together."""
     return a + b
@@ -57,4 +57,4 @@ async def summarize_prompt(text: str) -> list[dict]:  # type: ignore
 if __name__ == "__main__":
     print(f"\n--- Starting {mcp.name!r} via __main__ ---")
     # This starts the server, typically using the stdio transport by default
-    mcp.run()
+    mcp.run(transport="stdio")
