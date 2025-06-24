@@ -1,6 +1,7 @@
 # Version control
 
 Whhen creating a new PR on GitHub, please ensure that you follow these steps:
+
 - create the local branch from the `main` branch
 - ensure that the branch name is descriptive and follows the naming conventions (e.g., `feature/description`, `bugfix/description`, `hotfix/description`)
 - commit your changes with a clear and concise commit message

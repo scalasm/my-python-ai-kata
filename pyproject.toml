@@ -19,7 +19,7 @@ Changelog = "https://github.com/scalasm/my-python-ai-kata/releases"
 poetry-plugin-export = ">=1.8"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.13"
 click = ">=8.1.8"
 sqlalchemy = "^2.0.25"
 psycopg2-binary = "^2.9.9"
@@ -103,7 +103,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.pyright]
 typeCheckingMode = "standard"
-pythonVersion = "3.12"
+pythonVersion = "3.13"
 strictParameterNullChecking = true
 reportMissingTypeStubs = false
 # reportUnknownMemberType = true
