@@ -36,3 +36,11 @@ In the console you will configuyre what you need:
 
 So you can invoke the tools and see resources:
 ![Using Inspector Debug Tool](images/using_inspector.png)
+
+# Dockerized MCP Server
+
+You can package the MCP server using the provided [Dockerfile](../Dockerfile) - use the [build-mcp-docker-image.sh](../build-mcp-docker-image.sh) script for easier build. 
+
+In [mcp.json](../.vscode/mcp.json) a configuration is provided for easier testing - nothing different from running the MCP server from your same source code.
+
+The idea is that you package your MCP server somewhere, and then you reuse it in multiple places.
