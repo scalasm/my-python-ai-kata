@@ -1,4 +1,4 @@
-#/#!/bin/bash
+#!/bin/bash
 set -ex
 poetry export --only main -f requirements.txt --output requirements.txt
 
