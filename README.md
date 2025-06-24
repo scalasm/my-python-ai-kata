@@ -1,6 +1,6 @@
 # My Python AI Sandbox
 
-This is a Python 3.12 project based on Poetry and other Python tools.
+This is a Python 3.13 project based on Poetry and other Python tools.
 
 # What is included
 
@@ -28,7 +28,7 @@ The DevContainer will also spin up a Python virtual even with all the required d
 So, after first spinning up your dev environment, you will immediately be able to run the application main entrypoint through the command `my-python-ai-kata`:
 
 ```bash
-my-python-ai-kata-py3.12vscode ➜ /workspaces/my-python-ai-kata (main) $ clai
+my-python-ai-kata-py3.13vscode ➜ /workspaces/my-python-ai-kata (main) $ clai
 My Python AI Sandbox is ready.
 ```
 

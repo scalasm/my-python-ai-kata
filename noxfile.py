@@ -23,7 +23,7 @@ except ImportError:
 
 
 package = "my-python-ai-kata"
-python_versions = ["3.12"]
+python_versions = ["3.13"]
 nox.needs_version = ">= 2025.2.1"
 nox.options.sessions = ("pre-commit", "safety", "tests", "typeguard", "pyright")
 

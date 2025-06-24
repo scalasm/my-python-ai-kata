@@ -1,0 +1,11 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "Poetry Install (Python 3.13)",
+      "command": "poetry install",
+      "group": "build"
+    }
+  ]
+}
