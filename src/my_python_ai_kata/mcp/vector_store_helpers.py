@@ -109,7 +109,7 @@ class VectorStoreFactory:
         output_filename = os.path.join(self.work_dir, output_filename)
         with open(output_filename, "w") as f:
             for i, doc in enumerate(documents):
-                source = doc.metadata.get("source", "Unknown URL")
+                source = doc.metadata.get("source", "Unknown URL")  # type: ignore
                 f.write(
                     f"DOCUMENT {i + 1}\nSOURCE: {source}\nCONTENT:\n"
                     f"{doc.page_content}\n\n{'=' * 80}\n\n"
@@ -250,5 +250,5 @@ if __name__ == "__main__":
     relevant_docs = query_helper.query(query)
 
     for doc in relevant_docs:
-        print(doc.metadata["source"])
+        print(doc.metadata["source"])  # type: ignore
         print(doc.page_content[:500])

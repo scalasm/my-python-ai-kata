@@ -51,7 +51,7 @@ async def summarize_prompt(text: str) -> list[dict]:  # type: ignore
             "content": "You are a helpful assistant skilled at summarization.",
         },
         {"role": "user", "content": f"Please summarize the following text:\n\n{text}"},
-    ]
+    ]  # type: ignore
 
 
 if __name__ == "__main__":
