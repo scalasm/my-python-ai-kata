@@ -36,6 +36,9 @@
         "${workspaceFolder}/src/my_python_ai_kata/mcp/my_hello_server.py"
       ]
     },
+    "my-hello-mcp-server-sse": {
+      "url": "http://127.0.0.1:8000/sse"
+    },
     "my-langgraph_query_tool": {
       "type": "stdio",
       "command": "${workspaceFolder}/.venv/bin/fastmcp",

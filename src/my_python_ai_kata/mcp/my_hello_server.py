@@ -1,7 +1,6 @@
 """Hello World MCP Server."""
 
-from typing import Any
-
+from typing import Any, Literal
 from fastmcp import FastMCP
 
 
@@ -55,6 +54,16 @@ async def summarize_prompt(text: str) -> list[dict]:  # type: ignore
 
 
 if __name__ == "__main__":
-    print(f"\n--- Starting {mcp.name!r} via __main__ ---")
-    # This starts the server, typically using the stdio transport by default
-    mcp.run(transport="stdio")
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Start the MCP server.")
+    parser.add_argument(
+        "--transport",
+        choices=["stdio", "streamable-http", "sse"],
+        default="stdio",
+        help="Transport to use for the server (default: stdio)",
+    )
+    args = parser.parse_args()
+    transport: Literal["stdio", "streamable-http", "sse"] = args.transport  # type: ignore
+    print(f"\n--- Starting {mcp.name!r} via __main__ (transport={transport!r}) ---")
+    mcp.run(transport=transport)
