@@ -28,13 +28,10 @@ jobs:
           restore-keys: |
             poetry-${{ runner.os }}-
 
-      - name: Install Poetry
+      - name: Install Poetry, Nox, and Nox-Poetry
         run: |
           python -m pip install --upgrade pip
-          pip install poetry nox-poetry
-
-      - name: Install Nox
-        run: pip install nox
+          pip install poetry nox nox-poetry
 
       - name: Install project dependencies
         run: poetry install --no-interaction --no-root
