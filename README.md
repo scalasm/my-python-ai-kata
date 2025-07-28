@@ -5,6 +5,7 @@ This is a Python 3.13 project based on Poetry and other Python tools.
 # What is included
 
 - [MCP sample Tools](./docs/mcp.md) - add your MCP tools to VSCode and other clients
+- [Amazon Strands Agent](./docs/using-strands-agents.md) - POC agent using the Amazon Strands framework
 
 # Requirements
 
