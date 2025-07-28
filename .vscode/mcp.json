@@ -58,6 +58,10 @@
         "--rm",
         "scalasmhmh/my-hello-mcp-server:latest"
       ]
-    }
+    },
+    "strands": {
+      "command": "./.venv/bin/uvx",
+      "args": ["strands-agents-mcp-server"]
+    }    
   }
 }

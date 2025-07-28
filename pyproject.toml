@@ -35,6 +35,9 @@ bs4 = "^0.0.2"
 lxml = "^5.4.0"
 langgraph = "^0.4.8"
 mcp = {extras = ["cli"], version = "^1.9.3"}
+strands-agents = "^1.1.0"
+strands-agents-tools = "^0.2.2"
+uv = "^0.8.3"
 
 [tool.poetry.group.extra.dependencies]
 boto3 = "^1.35.92"
@@ -75,6 +78,9 @@ nox-poetry = "^1.2.0"
 [tool.poetry.scripts]
 clai = "my_python_ai_kata.__main__:main"
 
+[tool.poetry.dependencies]
+strands-agents = {extras = ["openai"], version = "^1.1.0"}
+strands-agents-mcp-server = "^0.1.2"
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
 tests = ["tests", "*/tests"]
