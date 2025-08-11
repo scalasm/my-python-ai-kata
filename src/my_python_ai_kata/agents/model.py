@@ -90,7 +90,17 @@ class ModelConfig:
 
 
 def get_or_create_ai_model(model_config: ModelConfig | None) -> Model:
-    """Factory method for creating an AI model that is ready to use according to required configuration."""
+    """Factory method for creating an AI model that is ready to use according to required configuration.
+
+    Args:
+        model_config (ModelConfig | None): The model configuration to use. If None, will create from environment.
+
+    Returns:
+        Model: The created AI model.
+
+    Raises:
+        ValueError: If the model configuration is invalid.
+    """
     if model_config is None:
         model_config = ModelConfig.from_environment()
 
