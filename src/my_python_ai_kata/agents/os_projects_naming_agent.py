@@ -1,12 +1,17 @@
 """Simple Agent using Strands Agentic framework with OpenAI."""
 
-from os import environ
 from strands import Agent
 from strands.types.tools import AgentTool
 from strands.tools.mcp import MCPClient
 from strands_tools import http_request  # pyright: ignore[reportMissingTypeStubs]
 from strands.models.openai import OpenAIModel
 from mcp import stdio_client, StdioServerParameters
+
+from my_python_ai_kata.agents.model import ModelConfig, ModelType, get_or_create_ai_model
+
+# Create the model 
+model = get_or_create_ai_model(ModelConfig.from_environment())
+
 
 # Define a naming-focused system prompt
 NAMING_SYSTEM_PROMPT = """
@@ -29,18 +34,6 @@ domain_name_tools = MCPClient(lambda: stdio_client(
 # Use a pre-built Strands Agents tool that can make requests to GitHub
 # to determine if a GitHub organization name is available
 github_tools = [http_request]
-
-model = OpenAIModel(
-    client_args={
-        "api_key": environ.get("OPENAI_API_KEY"),
-    },
-    # **model_config
-    model_id="gpt-4o",
-    params={
-        "max_tokens": 1000,
-        "temperature": 0.7,
-    }
-)
 
 with domain_name_tools:
     # Define the naming agent with tools and a system prompt
