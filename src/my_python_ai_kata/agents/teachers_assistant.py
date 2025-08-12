@@ -9,6 +9,8 @@ A specialized Strands agent that is the orchestrator to utilize sub-agents and t
 """
 
 from strands import Agent
+from strands.types.tools import AgentTool
+
 from my_python_ai_kata.agents.staff.english_assistant import english_assistant
 from my_python_ai_kata.agents.staff.math_assistant import math_assistant
 from my_python_ai_kata.agents.staff.computer_science_assistant import computer_science_assistant
@@ -47,8 +49,15 @@ Always confirm your understanding before routing to ensure accurate assistance.
 """
 
 
-def get_teacher_agent() -> Agent:
-    """Retrieve the teacher agent instance."""
+def get_teacher_agent(tools: list[AgentTool]) -> Agent:
+    """This agent coordinates between various subject-specific agents to provide comprehensive assistance.
+
+    Args:
+        tools (list[AgentTool]): A list of tools (agents) to be used by the teacher agent.
+
+    Returns:
+        Agent: The teacher agent instance.
+    """
 
     model = get_or_create_ai_model(ModelConfig.from_environment())
 
@@ -56,15 +65,19 @@ def get_teacher_agent() -> Agent:
     teacher_agent = Agent(
         system_prompt=TEACHER_SYSTEM_PROMPT,
         callback_handler=None,
-        tools=[math_assistant, language_assistant, english_assistant, computer_science_assistant, general_assistant],
+        tools=tools,
         model=model
     )
 
     return teacher_agent
 
 
-# Example usage
-if __name__ == "__main__":
+def start_interactive_session(teacher_agent: Agent) -> None:
+    """Starts an interactive session with the Teacher's Assistant agent.
+
+    Args:
+        teacher_agent (Agent): The Teacher's Assistant agent instance.
+    """
     print("\n📁 Teacher's Assistant Strands Agent 📁\n")
     print("Ask a question in any subject area, and I'll route it to the appropriate specialist.")
     print("Type 'exit' to quit.")
@@ -77,19 +90,25 @@ if __name__ == "__main__":
                 print("\nGoodbye! 👋")
                 break
 
-            teacher_agent = get_teacher_agent()
-
             response = teacher_agent(
-                user_input, 
+                user_input,
             )
-            
+
             # Extract and print only the relevant content from the specialized agent's response
             content = str(response)
             print(content)
-            
+
         except KeyboardInterrupt:
             print("\n\nExecution interrupted. Exiting...")
             break
         except Exception as e:
             print(f"\nAn error occurred: {str(e)}")
             print("Please try asking a different question.")
+
+
+# Example usage
+if __name__ == "__main__":
+    # Use local Strands Agents as tools for the main Teacher Assistant
+    tools: list[AgentTool] = [math_assistant, language_assistant, english_assistant, computer_science_assistant, general_assistant]
+    teacher_agent = get_teacher_agent(tools)
+    start_interactive_session(teacher_agent)

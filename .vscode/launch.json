@@ -11,10 +11,10 @@
       "envFile": "${workspaceFolder}/.env"
     },
     {
-      "name": "Run A2A Playground",
+      "name": "Run TeachAssist (A2A)",
       "type": "debugpy",
       "request": "launch",
-      "program": "${workspaceFolder}/src/my_python_ai_kata/agents/a2a_playground.py",
+      "program": "${workspaceFolder}/src/my_python_ai_kata/agents/teachers_assistant_a2a.py",
       "console": "integratedTerminal",
       "justMyCode": true,
       "envFile": "${workspaceFolder}/.env"
