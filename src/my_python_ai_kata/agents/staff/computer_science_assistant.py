@@ -74,6 +74,8 @@ def get_computer_science_assistant() -> Agent:
     """
     model = get_or_create_ai_model(ModelConfig.from_environment())
     cs_agent = Agent(
+        name="Computer Science Assistant",
+        description="A specialized assistant for computer science education and programming.",
         system_prompt=COMPUTER_SCIENCE_ASSISTANT_SYSTEM_PROMPT,
         tools=[python_repl, shell, file_read, file_write, editor],
         model=model

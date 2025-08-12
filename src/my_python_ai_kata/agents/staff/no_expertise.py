@@ -71,6 +71,8 @@ def get_general_assistant() -> Agent:
     """
     model = get_or_create_ai_model(ModelConfig.from_environment())
     general_agent = Agent(
+        name="General Assistant",
+        description="A general knowledge assistant for various topics while not being a specialist.",
         system_prompt=GENERAL_ASSISTANT_SYSTEM_PROMPT,
         tools=[],  # No specialized tools needed for general knowledge
         model=model

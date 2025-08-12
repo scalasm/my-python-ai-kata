@@ -69,6 +69,8 @@ def get_english_assistant() -> Agent:
     """
     model = get_or_create_ai_model(ModelConfig.from_environment())
     english_agent = Agent(
+        name="English Assistant",
+        description="A specialized assistant for English language and literature.",
         system_prompt=ENGLISH_ASSISTANT_SYSTEM_PROMPT,
         tools=[editor, file_read, file_write],
         model=model

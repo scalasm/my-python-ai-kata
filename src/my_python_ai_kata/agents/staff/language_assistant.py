@@ -69,6 +69,8 @@ def get_language_assistant() -> Agent:
     """
     model = get_or_create_ai_model(ModelConfig.from_environment())
     language_agent = Agent(
+        name="Language Assistant",
+        description="A specialized assistant for language translation and learning.",
         system_prompt=LANGUAGE_ASSISTANT_SYSTEM_PROMPT,
         tools=[http_request],
         model=model

@@ -70,6 +70,8 @@ def get_math_assistant() -> Agent:
     """
     model = get_or_create_ai_model(ModelConfig.from_environment())
     math_agent = Agent(
+        name="Math Assistant",
+        description="A specialized assistant for mathematics education and problem-solving.",
         system_prompt=MATH_ASSISTANT_SYSTEM_PROMPT,
         tools=[calculator],
         model=model

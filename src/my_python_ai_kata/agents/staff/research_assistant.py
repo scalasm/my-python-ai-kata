@@ -43,6 +43,8 @@ def get_research_assistant() -> Agent:
     """
     model = get_or_create_ai_model(ModelConfig.from_environment())
     research_agent = Agent(
+        name="Research Assistant",
+        description="A specialized assistant for research inquiries and information retrieval.",
         system_prompt=RESEARCH_ASSISTANT_PROMPT,
         tools=[retrieve, http_request],
         model=model
