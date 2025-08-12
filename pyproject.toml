@@ -37,7 +37,7 @@ langgraph = "^0.4.8"
 mcp = {extras = ["cli"], version = "^1.9.3"}
 uv = "^0.8.3"
 dotenv = "^0.9.9"
-strands-agents = {extras = ["openai", "litellm"], version = "^1.4.0"}
+strands-agents = {extras = ["openai", "litellm", "a2a"], version = "^1.4.0"}
 strands-agents-tools = "^0.2.3"
 strands-agents-mcp-server = "^0.1.2"
 

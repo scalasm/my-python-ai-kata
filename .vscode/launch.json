@@ -11,6 +11,24 @@
       "envFile": "${workspaceFolder}/.env"
     },
     {
+      "name": "Run A2A Playground",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/my_python_ai_kata/agents/a2a_playground.py",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "name": "Run TeachAssist",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/my_python_ai_kata/agents/teachers_assistant.py",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "envFile": "${workspaceFolder}/.env"
+    },    
+    {
       "name": "Run My Hello MCP Server",
       "env": {
         "FASTMCP_SERVER_PORT": "8888"
