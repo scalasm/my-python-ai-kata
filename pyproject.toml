@@ -79,6 +79,11 @@ nox-poetry = "^1.2.0"
 
 [tool.poetry.scripts]
 clai = "my_python_ai_kata.__main__:main"
+english_assistant = "my_python_ai_kata.agents.teachers_assistant_a2a:start_english_assistant"
+math_assistant = "my_python_ai_kata.agents.teachers_assistant_a2a:start_math_assistant"
+computer_science_assistant = "my_python_ai_kata.agents.teachers_assistant_a2a:start_computer_science_assistant"
+language_assistant = "my_python_ai_kata.agents.teachers_assistant_a2a:start_language_assistant"
+general_assistant = "my_python_ai_kata.agents.teachers_assistant_a2a:start_general_assistant"
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
