@@ -4,10 +4,9 @@ from strands import Agent
 from strands.types.tools import AgentTool
 from strands.tools.mcp import MCPClient
 from strands_tools import http_request  # pyright: ignore[reportMissingTypeStubs]
-from strands.models.openai import OpenAIModel
 from mcp import stdio_client, StdioServerParameters
 
-from my_python_ai_kata.agents.model import ModelConfig, ModelType, get_or_create_ai_model
+from my_python_ai_kata.agents.model import ModelConfig, get_or_create_ai_model
 
 # Create the model 
 model = get_or_create_ai_model(ModelConfig.from_environment())
