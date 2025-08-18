@@ -2,14 +2,40 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Run Strands Agent",
+      "name": "Run OS Project Naming Agent",
       "type": "debugpy",
       "request": "launch",
-      "program": "${workspaceFolder}/src/my_python_ai_kata/agents/agent.py",
+      "program": "${workspaceFolder}/src/my_python_ai_kata/agents/os_projects_naming_agent.py",
       "console": "integratedTerminal",
       "justMyCode": true,
       "envFile": "${workspaceFolder}/.env"
     },
+    {
+      "name": "Run TeachAssist (A2A)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/my_python_ai_kata/agents/teachers_assistant_a2a.py",
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "envFile": "${workspaceFolder}/.env",
+      "env": {
+        "CONFIG_DIR": "${workspaceFolder}/config",
+        "LOGS_DIR": "${workspaceFolder}/logs"
+      }
+    },
+    {
+      "name": "Run TeachAssist",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/my_python_ai_kata/agents/teachers_assistant.py",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "envFile": "${workspaceFolder}/.env",
+      "env": {
+        "CONFIG_DIR": "${workspaceFolder}/config",
+        "LOGS_DIR": "${workspaceFolder}/logs"
+      }
+    },    
     {
       "name": "Run My Hello MCP Server",
       "env": {

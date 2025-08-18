@@ -1,12 +1,19 @@
 """Simple Agent using Strands Agentic framework with OpenAI."""
 
-from os import environ
+import logging
+
 from strands import Agent
 from strands.types.tools import AgentTool
 from strands.tools.mcp import MCPClient
 from strands_tools import http_request  # pyright: ignore[reportMissingTypeStubs]
-from strands.models.openai import OpenAIModel
 from mcp import stdio_client, StdioServerParameters
+
+from my_python_ai_kata.agents.model import ModelConfig, get_or_create_ai_model
+
+logging.basicConfig(level=logging.INFO)
+
+# Create the model
+model = get_or_create_ai_model(ModelConfig.from_environment())
 
 # Define a naming-focused system prompt
 NAMING_SYSTEM_PROMPT = """
@@ -21,35 +28,33 @@ that the domain names are not already registered and that the GitHub
 organization names are not already used.
 """
 
-# Load an MCP server that can determine if a domain name is available
-domain_name_tools = MCPClient(lambda: stdio_client(
-    StdioServerParameters(command="uvx", args=["fastdomaincheck-mcp-server"])
-))
 
-# Use a pre-built Strands Agents tool that can make requests to GitHub
-# to determine if a GitHub organization name is available
-github_tools = [http_request]
+def create_naming_agent() -> Agent:
+    """Create a naming agent for open source projects.
 
-model = OpenAIModel(
-    client_args={
-        "api_key": environ.get("OPENAI_API_KEY"),
-    },
-    # **model_config
-    model_id="gpt-4o",
-    params={
-        "max_tokens": 1000,
-        "temperature": 0.7,
-    }
-)
+    Returns an instance of the Agent class configured for project naming.
+    """
+    # Load an MCP server that can determine if a domain name is available
+    domain_name_tools = MCPClient(lambda: stdio_client(
+        StdioServerParameters(command="uvx", args=["fastdomaincheck-mcp-server"])
+    ))
 
-with domain_name_tools:
-    # Define the naming agent with tools and a system prompt
-    tools: list[AgentTool] = domain_name_tools.list_tools_sync() + github_tools  # type: ignore
-    naming_agent = Agent(
-        system_prompt=NAMING_SYSTEM_PROMPT,
-        model=model,
-        tools=tools
-    )
+    # Use a pre-built Strands Agents tool that can make requests to GitHub
+    # to determine if a GitHub organization name is available
+    github_tools = [http_request]
+
+    with domain_name_tools:
+        # Define the naming agent with tools and a system prompt
+        tools: list[AgentTool] = domain_name_tools.list_tools_sync() + github_tools  # type: ignore
+        return Agent(
+            system_prompt=NAMING_SYSTEM_PROMPT,
+            model=model,
+            tools=tools
+        )
+
+
+if __name__ == "__main__":
+    naming_agent = create_naming_agent()
 
     # Run the naming agent with the end user's prompt
     result = naming_agent("I need to name an open source project for building AI agents.")

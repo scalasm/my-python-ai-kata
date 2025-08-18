@@ -18,7 +18,7 @@ Changelog = "https://github.com/scalasm/my-python-ai-kata/releases"
 [tool.poetry.requires-plugins]
 poetry-plugin-export = ">=1.8"
 
-[tool.poetry.group.main.dependencies]
+[tool.poetry.dependencies]
 python = "^3.13"
 click = ">=8.1.8"
 sqlalchemy = "^2.0.25"
@@ -35,9 +35,11 @@ bs4 = "^0.0.2"
 lxml = "^5.4.0"
 langgraph = "^0.4.8"
 mcp = {extras = ["cli"], version = "^1.9.3"}
-strands-agents = "^1.1.0"
-strands-agents-tools = "^0.2.2"
 uv = "^0.8.3"
+dotenv = "^0.9.9"
+strands-agents = {extras = ["openai", "litellm", "a2a"], version = "^1.4.0"}
+strands-agents-tools = "^0.2.3"
+strands-agents-mcp-server = "^0.1.2"
 
 [tool.poetry.group.extra.dependencies]
 boto3 = "^1.35.92"
@@ -61,7 +63,7 @@ isort = ">=5.10.1"
 pep8-naming = ">=0.12.1"
 pre-commit = ">=2.16.0"
 pre-commit-hooks = ">=4.1.0"
-pytest = ">=6.2.5"
+pytest = "^8.4.1"
 pyupgrade = ">=2.29.1"
 safety = ">=1.10.3"
 sphinx = ">=4.3.2"
@@ -77,10 +79,13 @@ nox-poetry = "^1.2.0"
 
 [tool.poetry.scripts]
 clai = "my_python_ai_kata.__main__:main"
+english_assistant = "my_python_ai_kata.agents.teachers_assistant_a2a:start_english_assistant"
+math_assistant = "my_python_ai_kata.agents.teachers_assistant_a2a:start_math_assistant"
+computer_science_assistant = "my_python_ai_kata.agents.teachers_assistant_a2a:start_computer_science_assistant"
+language_assistant = "my_python_ai_kata.agents.teachers_assistant_a2a:start_language_assistant"
+general_assistant = "my_python_ai_kata.agents.teachers_assistant_a2a:start_general_assistant"
+run_teacher_assistant = "my_python_ai_kata.agents.teachers_assistant:start_teacher_agent"
 
-[tool.poetry.dependencies]
-strands-agents = {extras = ["openai"], version = "^1.1.0"}
-strands-agents-mcp-server = "^0.1.2"
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
 tests = ["tests", "*/tests"]

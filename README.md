@@ -17,6 +17,24 @@ Note: use the SSH URL to access clone this repository, not a HTTPS one (otherwis
 
 # How to run
 
+Configure your `$WORKSPACE_FOLDER/.env` file like this:
+```shell
+# Environment variables for the application - do not version control this file!
+# LiteLLM API key and configuration - when we will have an API Gateway, we will have a dedicated configuration for it
+# 
+MODEL_TYPE="litellm|openai"
+LITELLM_API_KEY="<Your LiteLLM key>"
+LITELLM_BASE_URL="<Your LiteLLM endpoint>"
+LITELLM_MODEL="<Your LiteLLM configured model>"
+# OpenAI API key
+OPENAI_API_KEY="<your OpenAI key"
+OPENAI_API_MODEL="<your OpenAI mode, like gpt-4.1>"
+
+MODEL_MAX_TOKEN=1000
+MODEL_TEMPERATURE=0.7
+```
+
+
 While you can run this with whatever IDE you prefer, a [DevContainer configuration](https://hub.docker.com/r/microsoft/devcontainers-python) is included so that you can use [VSCode support for DevContainers](https://code.visualstudio.com/docs/devcontainers/containers).
 
 - Folders on your computer that will mounted inside the DevContainer:
