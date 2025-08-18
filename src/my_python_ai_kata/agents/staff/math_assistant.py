@@ -1,4 +1,4 @@
-"""Trip planning assistant."""
+"""Math assistant agent for solving mathematical problems and providing educational explanations."""
 
 from strands import Agent, tool  # type: ignore
 from strands_tools import calculator  # type: ignore
