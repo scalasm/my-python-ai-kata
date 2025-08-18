@@ -8,7 +8,7 @@ from typing import Dict, Any
 from dotenv import load_dotenv
 
 from strands import Agent, tool
-from strands_tools import retrieve, http_request  # type: ignore
+from strands_tools import retrieve  # type: ignore
 
 # Define a specialized system prompt
 RESEARCH_ASSISTANT_PROMPT = """
