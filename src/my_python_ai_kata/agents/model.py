@@ -1,5 +1,10 @@
 """Example weather agent using OpenAI and HTTP requests to fetch weather data."""
+"""Model configuration and factory methods for creating AI model instances (OpenAI or LiteLLM).
 
+This module provides:
+- ModelConfig: a dataclass for configuring AI model parameters from environment variables or directly.
+- get_or_create_ai_model: a factory function to instantiate the appropriate AI model based on configuration.
+"""
 from dataclasses import dataclass
 from enum import Enum
 from os import environ
