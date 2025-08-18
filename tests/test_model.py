@@ -66,7 +66,7 @@ def test_get_or_create_ai_model_openai(monkeypatch: MonkeyPatch):
     model_config = model.get_config()
     assert model_config["model_id"] == "gpt-test"
     
-    params = model_config["params"] # getattr(model_config, "params")
+    params = model_config["params"]
     assert params["max_tokens"] == 123
     assert params["temperature"] == 0.5
 
