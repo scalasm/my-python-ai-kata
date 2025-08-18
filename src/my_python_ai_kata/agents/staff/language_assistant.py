@@ -1,4 +1,4 @@
-"""English Assistant."""
+"""Language Assistant for translation and language learning."""
 
 from strands import Agent, tool  # type: ignore
 from strands_tools import http_request  # type: ignore
