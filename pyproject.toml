@@ -84,6 +84,7 @@ math_assistant = "my_python_ai_kata.agents.teachers_assistant_a2a:start_math_ass
 computer_science_assistant = "my_python_ai_kata.agents.teachers_assistant_a2a:start_computer_science_assistant"
 language_assistant = "my_python_ai_kata.agents.teachers_assistant_a2a:start_language_assistant"
 general_assistant = "my_python_ai_kata.agents.teachers_assistant_a2a:start_general_assistant"
+run_teacher_assistant = "my_python_ai_kata.agents.teachers_assistant:start_teacher_agent"
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
