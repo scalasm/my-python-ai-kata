@@ -16,8 +16,12 @@
       "request": "launch",
       "program": "${workspaceFolder}/src/my_python_ai_kata/agents/teachers_assistant_a2a.py",
       "console": "integratedTerminal",
-      "justMyCode": true,
-      "envFile": "${workspaceFolder}/.env"
+      "justMyCode": false,
+      "envFile": "${workspaceFolder}/.env",
+      "env": {
+        "CONFIG_DIR": "${workspaceFolder}/config",
+        "LOGS_DIR": "${workspaceFolder}/logs"
+      }
     },
     {
       "name": "Run TeachAssist",
@@ -26,7 +30,11 @@
       "program": "${workspaceFolder}/src/my_python_ai_kata/agents/teachers_assistant.py",
       "console": "integratedTerminal",
       "justMyCode": true,
-      "envFile": "${workspaceFolder}/.env"
+      "envFile": "${workspaceFolder}/.env",
+      "env": {
+        "CONFIG_DIR": "${workspaceFolder}/config",
+        "LOGS_DIR": "${workspaceFolder}/logs"
+      }
     },    
     {
       "name": "Run My Hello MCP Server",
