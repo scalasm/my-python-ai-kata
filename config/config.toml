@@ -1,0 +1,6 @@
+[logging]
+# Logging configuration
+# Levels: DEBUG, INFO, WARNING, ERROR
+level = "INFO"
+# Directory for agent log files (with automatic rotation)
+log_directory = "./logs"
