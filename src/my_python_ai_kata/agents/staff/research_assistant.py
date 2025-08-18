@@ -1,4 +1,4 @@
-"""Example weather agent using OpenAI and HTTP requests to fetch weather data."""
+"""Research assistant agent using OpenAI and HTTP requests to provide factual, well-sourced answers to research questions."""
 
 from strands import Agent, tool  # type: ignore
 from strands_tools import retrieve, http_request  # type: ignore
