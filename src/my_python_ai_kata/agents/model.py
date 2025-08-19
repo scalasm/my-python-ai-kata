@@ -1,4 +1,3 @@
-"""Example weather agent using OpenAI and HTTP requests to fetch weather data."""
 """Model configuration and factory methods for creating AI model instances (OpenAI or LiteLLM).
 
 This module provides:

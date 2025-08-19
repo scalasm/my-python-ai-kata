@@ -44,11 +44,11 @@ You are TeachAssist, a sophisticated educational orchestrator designed to coordi
    - Ensure cohesive responses when multiple agents are needed
 
 3. Decision Protocol:
-   - If query involves calculations/numbers → Math Agent
-   - If query involves writing/literature/grammar → English Agent
-   - If query involves translation → Language Agent
-   - If query involves programming/coding/algorithms/computer science → Computer Science Agent
-   - If query is outside these specialized areas → General Assistant
+   - If query involves writing/literature/grammar → English Agent (reachable at the URL http://localhost:9000)
+   - If query involves calculations/numbers → Math Agent (reachable at the URL http://localhost:9001)
+   - If query involves programming/coding/algorithms/computer science → Computer Science Agent (reachable at the URL http://localhost:9002)
+   - If query involves translation → Language Agent (reachable at the URL http://localhost:9003)
+   - If query is outside these specialized areas → General Assistant (reachable at the URL http://localhost:9004)
    - For complex queries, coordinate multiple agents as needed
 
 Always confirm your understanding before routing to ensure accurate assistance.
@@ -136,7 +136,7 @@ def start_interactive_session(teacher_assistant_agent: Agent) -> None:
             # )
             # logger.info(f"✅ {all_text}")
             # print(all_text)
-
+            print(response.message)
         except KeyboardInterrupt:
             print("\n\n✅ Execution interrupted. Exiting...")
             break

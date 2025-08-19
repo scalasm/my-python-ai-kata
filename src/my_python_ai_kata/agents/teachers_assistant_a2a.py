@@ -63,8 +63,6 @@ async def start_teacher_assistant() -> None:
         "http://localhost:9004"
     ])
 
-    await provider._discover_known_agents()
-
     conversation_manager = SlidingWindowConversationManager(
         window_size=10,  # Limit history size
     )

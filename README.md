@@ -86,3 +86,8 @@ If you are a developer (or an AI coding agent!) looking for guidance about the p
 # Docker support
 
 See [running-postgres-in-docker.md](./docs/running-postgres-in-docker.md) - it is useful if you want to spin up a postgres database quickly.
+
+# TODO
+
+- Rework the configuration using the same approach I used for the [strands demo fork](https://github.com/scalasm/strands-a2a-demo).
+- A2A demo using Google SDK and Langchain A2A

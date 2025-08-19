@@ -59,7 +59,7 @@ def language_assistant(query: str) -> str:
     except Exception as e:
         # Return specific error message for language processing
         return f"Error processing your language query: {str(e)}"
-    
+
 
 def get_language_assistant() -> Agent:
     """Create and return a language assistant agent.
