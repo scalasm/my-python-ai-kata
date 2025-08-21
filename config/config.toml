@@ -4,3 +4,12 @@
 level = "INFO"
 # Directory for agent log files (with automatic rotation)
 log_directory = "./logs"
+
+[agents]
+# Model configuration for all agents
+#model = "bedrock|us.amazon.nova-premier-v1:0"
+#model = "bedrock|us.amazon.nova-pro-v1:0"
+#model = "bedrock|us.amazon.nova-lite-v1:0"
+model = "openai|gpt-4.1"
+max_tokens = 1024
+temperature = 0.7

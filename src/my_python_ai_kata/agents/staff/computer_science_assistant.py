@@ -3,7 +3,7 @@
 from strands import Agent, tool  # type: ignore
 from strands_tools import python_repl, shell, file_read, file_write, editor  # type: ignore
 
-from my_python_ai_kata.agents.model import ModelConfig, get_or_create_ai_model
+from my_python_ai_kata.agents.app_config import ModelConfig, get_or_create_ai_model
 
 COMPUTER_SCIENCE_ASSISTANT_SYSTEM_PROMPT = """
 You are ComputerScienceExpert, a specialized assistant for computer science education and programming. Your capabilities include:
@@ -72,7 +72,7 @@ def get_computer_science_assistant() -> Agent:
     Returns:
         A configured Strands Agent for computer science assistance
     """
-    model = get_or_create_ai_model(ModelConfig.from_environment())
+    model = get_or_create_ai_model(ModelConfig.from_config())
     cs_agent = Agent(
         name="Computer Science Assistant",
         description="A specialized assistant for computer science education and programming.",

@@ -8,12 +8,12 @@ from strands.tools.mcp import MCPClient
 from strands_tools import http_request  # pyright: ignore[reportMissingTypeStubs]
 from mcp import stdio_client, StdioServerParameters
 
-from my_python_ai_kata.agents.model import ModelConfig, get_or_create_ai_model
+from my_python_ai_kata.agents.app_config import ModelConfig, get_or_create_ai_model
 
 logging.basicConfig(level=logging.INFO)
 
 # Create the model
-model = get_or_create_ai_model(ModelConfig.from_environment())
+model = get_or_create_ai_model(ModelConfig.from_config())
 
 # Define a naming-focused system prompt
 NAMING_SYSTEM_PROMPT = """

@@ -22,7 +22,7 @@ from my_python_ai_kata.agents.staff.computer_science_assistant import computer_s
 from my_python_ai_kata.agents.staff.language_assistant import language_assistant
 from my_python_ai_kata.agents.staff.no_expertise import general_assistant
 
-from my_python_ai_kata.agents.model import ModelConfig, get_or_create_ai_model
+from my_python_ai_kata.agents.app_config import ModelConfig, get_or_create_ai_model
 
 logger = logging.getLogger(__name__)
 
@@ -65,7 +65,7 @@ def get_teacher_agent(tools: list[AgentTool], conversation_manager: Conversation
     Returns:
         Agent: The teacher agent instance.
     """
-    model = get_or_create_ai_model(ModelConfig.from_environment())
+    model = get_or_create_ai_model(ModelConfig.from_config())
 
     # Create a file-focused agent with selected tools
     teacher_agent = Agent(

@@ -1,14 +1,7 @@
 """Example weather agent using OpenAI and HTTP requests to fetch weather data."""
 
-from os import environ
-from strands import Agent
-from strands_tools import http_request  # pyright: ignore[reportMissingTypeStubs]
-from strands.models.openai import OpenAIModel
-from typing import Dict, Any
-from dotenv import load_dotenv
-
-from strands import Agent, tool
-from strands_tools import retrieve  # type: ignore
+from strands import Agent, tool # type: ignore
+from strands_tools import http_request, retrieve  # type: ignore
 
 # Define a specialized system prompt
 RESEARCH_ASSISTANT_PROMPT = """

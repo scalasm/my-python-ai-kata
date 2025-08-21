@@ -3,7 +3,7 @@
 from strands import Agent, tool  # type: ignore
 from strands_tools import file_read, file_write, editor  # type: ignore
 
-from my_python_ai_kata.agents.model import ModelConfig, get_or_create_ai_model
+from my_python_ai_kata.agents.app_config import ModelConfig, get_or_create_ai_model
 
 ENGLISH_ASSISTANT_SYSTEM_PROMPT = """
 You are English master, an advanced English education assistant. Your capabilities include:
@@ -67,7 +67,7 @@ def get_english_assistant() -> Agent:
     Returns:
         A configured Strands Agent for English assistance
     """
-    model = get_or_create_ai_model(ModelConfig.from_environment())
+    model = get_or_create_ai_model(ModelConfig.from_config())
     english_agent = Agent(
         name="English Assistant",
         description="A specialized assistant for English language and literature.",

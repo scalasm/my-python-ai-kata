@@ -3,7 +3,7 @@
 from strands import Agent, tool  # type: ignore
 from strands_tools import retrieve, http_request  # type: ignore
 
-from my_python_ai_kata.agents.model import ModelConfig, get_or_create_ai_model
+from my_python_ai_kata.agents.app_config import ModelConfig, get_or_create_ai_model
 
 # Define a specialized system prompt
 RESEARCH_ASSISTANT_PROMPT = """
@@ -41,7 +41,7 @@ def get_research_assistant() -> Agent:
     Returns:
         A configured Strands Agent for research assistance
     """
-    model = get_or_create_ai_model(ModelConfig.from_environment())
+    model = get_or_create_ai_model(ModelConfig.from_config())
     research_agent = Agent(
         name="Research Assistant",
         description="A specialized assistant for research inquiries and information retrieval.",

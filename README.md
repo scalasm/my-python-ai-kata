@@ -25,15 +25,11 @@ Configure your `$WORKSPACE_FOLDER/.env` file like this:
 MODEL_TYPE="litellm|openai"
 LITELLM_API_KEY="<Your LiteLLM key>"
 LITELLM_BASE_URL="<Your LiteLLM endpoint>"
-LITELLM_MODEL="<Your LiteLLM configured model>"
 # OpenAI API key
 OPENAI_API_KEY="<your OpenAI key"
-OPENAI_API_MODEL="<your OpenAI mode, like gpt-4.1>"
-
-MODEL_MAX_TOKEN=1000
-MODEL_TEMPERATURE=0.7
 ```
 
+The other application configurations, like the model to use, are defined in [config/config.toml](./config/config.toml) file.
 
 While you can run this with whatever IDE you prefer, a [DevContainer configuration](https://hub.docker.com/r/microsoft/devcontainers-python) is included so that you can use [VSCode support for DevContainers](https://code.visualstudio.com/docs/devcontainers/containers).
 

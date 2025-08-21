@@ -2,7 +2,7 @@
 
 from strands import Agent, tool  # type: ignore
 
-from my_python_ai_kata.agents.model import ModelConfig, get_or_create_ai_model
+from my_python_ai_kata.agents.app_config import ModelConfig, get_or_create_ai_model
 
 GENERAL_ASSISTANT_SYSTEM_PROMPT = """
 You are GeneralAssist, a concise general knowledge assistant for topics outside specialized domains. Your key characteristics are:
@@ -69,7 +69,7 @@ def get_general_assistant() -> Agent:
     Returns:
         A configured Strands Agent for general knowledge assistance
     """
-    model = get_or_create_ai_model(ModelConfig.from_environment())
+    model = get_or_create_ai_model(ModelConfig.from_config())
     general_agent = Agent(
         name="General Assistant",
         description="A general knowledge assistant for various topics while not being a specialist.",

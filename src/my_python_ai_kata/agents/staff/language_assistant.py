@@ -3,7 +3,7 @@
 from strands import Agent, tool  # type: ignore
 from strands_tools import http_request  # type: ignore
 
-from my_python_ai_kata.agents.model import ModelConfig, get_or_create_ai_model
+from my_python_ai_kata.agents.app_config import ModelConfig, get_or_create_ai_model
 
 LANGUAGE_ASSISTANT_SYSTEM_PROMPT = """
 You are LanguageAssistant, a specialized language translation and learning assistant. Your role encompasses:
@@ -67,7 +67,7 @@ def get_language_assistant() -> Agent:
     Returns:
         A configured Strands Agent for language assistance
     """
-    model = get_or_create_ai_model(ModelConfig.from_environment())
+    model = get_or_create_ai_model(ModelConfig.from_config())
     language_agent = Agent(
         name="Language Assistant",
         description="A specialized assistant for language translation and learning.",

@@ -3,7 +3,7 @@
 from strands import Agent, tool  # type: ignore
 from strands_tools import calculator  # type: ignore
 
-from my_python_ai_kata.agents.model import ModelConfig, get_or_create_ai_model
+from my_python_ai_kata.agents.app_config import ModelConfig, get_or_create_ai_model
 
 MATH_ASSISTANT_SYSTEM_PROMPT = """
 You are math wizard, a specialized mathematics education assistant. Your capabilities include:
@@ -68,7 +68,7 @@ def get_math_assistant() -> Agent:
     Returns:
         A configured Strands Agent for math assistance
     """
-    model = get_or_create_ai_model(ModelConfig.from_environment())
+    model = get_or_create_ai_model(ModelConfig.from_config())
     math_agent = Agent(
         name="Math Assistant",
         description="A specialized assistant for mathematics education and problem-solving.",
