@@ -74,6 +74,25 @@
       "console": "integratedTerminal",
       "justMyCode": true,
       "envFile": "${workspaceFolder}/.env"
-    }
+    },
+    {
+      "name": "A2A SDK - Run HelloWorld (Server)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/my_python_ai_kata/agents/a2a/server.py",
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "name": "A2A SDK - Run HelloWorld (Client)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/my_python_ai_kata/agents/a2a/client.py",
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "envFile": "${workspaceFolder}/.env"
+    }    
+
   ]
 }

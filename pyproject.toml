@@ -40,6 +40,7 @@ dotenv = "^0.9.9"
 strands-agents = {extras = ["openai", "litellm", "a2a"], version = "^1.4.0"}
 strands-agents-tools = "^0.2.3"
 strands-agents-mcp-server = "^0.1.2"
+a2a-sdk = "^0.3.2"
 
 [tool.poetry.group.extra.dependencies]
 boto3 = "^1.35.92"
