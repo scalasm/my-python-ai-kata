@@ -8,7 +8,7 @@ from a2a.types import (
     AgentCard,
     AgentSkill,
 )
-from my_python_ai_kata.agents.a2a.agent_executor import (
+from my_python_ai_kata.agents.a2a.helloworld.agent_executor import (
     HelloWorldAgentExecutor,  # type: ignore[import-untyped]
 )
 
