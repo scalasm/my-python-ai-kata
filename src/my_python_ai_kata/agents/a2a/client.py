@@ -23,8 +23,6 @@ async def main() -> None:
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger(__name__)  # Get a logger instance
 
-    # --8<-- [start:A2ACardResolver]
-
     base_url = 'http://localhost:9999'
 
     async with httpx.AsyncClient() as httpx_client:
@@ -34,7 +32,6 @@ async def main() -> None:
             base_url=base_url,
             # agent_card_path uses default, extended_agent_card_path also uses default
         )
-        # --8<-- [end:A2ACardResolver]
 
         # Fetch Public Agent Card and Initialize Client
         final_agent_card_to_use: AgentCard | None = None
@@ -101,7 +98,6 @@ async def main() -> None:
                 'Failed to fetch the public agent card. Cannot continue.'
             ) from e
 
-        # --8<-- [start:send_message]
         client = A2AClient(
             httpx_client=httpx_client, agent_card=final_agent_card_to_use
         )
@@ -122,9 +118,6 @@ async def main() -> None:
 
         response = await client.send_message(request)
         print(response.model_dump(mode='json', exclude_none=True))
-        # --8<-- [end:send_message]
-
-        # --8<-- [start:send_message_streaming]
 
         streaming_request = SendStreamingMessageRequest(
             id=str(uuid4()), params=MessageSendParams(**send_message_payload)
@@ -134,7 +127,6 @@ async def main() -> None:
 
         async for chunk in stream_response:
             print(chunk.model_dump(mode='json', exclude_none=True))
-        # --8<-- [end:send_message_streaming]
 
 
 if __name__ == '__main__':

@@ -15,7 +15,6 @@ from my_python_ai_kata.agents.a2a.agent_executor import (
 
 def start_agent_server() -> None:
     """Start the A2A agent server."""
-    # --8<-- [start:AgentSkill]
     skill = AgentSkill(
         id='hello_world',
         name='Returns hello world',
@@ -23,7 +22,6 @@ def start_agent_server() -> None:
         tags=['hello world'],
         examples=['hi', 'hello world'],
     )
-    # --8<-- [end:AgentSkill]
 
     extended_skill = AgentSkill(
         id='super_hello_world',
@@ -33,7 +31,6 @@ def start_agent_server() -> None:
         examples=['super hi', 'give me a super hello'],
     )
 
-    # --8<-- [start:AgentCard]
     # This will be the public-facing agent card
     public_agent_card = AgentCard(
         name='Hello World Agent',
@@ -46,7 +43,6 @@ def start_agent_server() -> None:
         skills=[skill],  # Only the basic skill for the public card
         supports_authenticated_extended_card=True,
     )
-    # --8<-- [end:AgentCard]
 
     # This will be the authenticated extended agent card
     # It includes the additional 'extended_skill'
